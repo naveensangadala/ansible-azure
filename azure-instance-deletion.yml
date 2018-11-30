@@ -1,0 +1,16 @@
+---
+- name: Terminate test-azure instance
+  hosts: local
+  gather_facts: True
+  connection: local
+  tasks:
+  - name: delete test-azure-instance
+    azure_rm_virtualmachine:
+      resource_group: nsangadala-test1
+      name: test-azure-instance
+      admin_username: nsangadala
+      ssh_password_enabled: false
+      ssh_public_keys:
+        - path: /home/nsangadala/.ssh/authorized_keys
+          key_date: "XXXXXXXXXXXXXXXXXXXXXX"
+      state: absent

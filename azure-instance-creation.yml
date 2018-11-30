@@ -1,0 +1,20 @@
+---
+- name: Create test-azure-instance
+  hosts: local
+  connection: local
+  tasks:
+  - name: Create test-azure-inatce
+    azure_rm_virtualmachine:
+      resource_group: nsangadala-test1
+      name: test-azure-instance
+      vm_size: Standard_B1s
+      admin_username: nsangadala
+      ssh_password_enabled: false
+      ssh_public_keys:
+        - path: /home/nsangadala/.ssh/authorized_keys
+          key_date: "XXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      image:
+        offer: CentOS
+        publisher: OpenLogic
+        sku: '7.1'
+        version: latest
